@@ -1,5 +1,6 @@
 import streamlit as st
 import lab_1.lab_1_utils as l
+import numpy as np
 
 def show():
     st.title("Lab 1")
@@ -11,7 +12,7 @@ def show():
     learning_rate = 0.01
 
     if 'input_hidden_weights' not in st.session_state or 'hidden_output_weights' not in st.session_state:
-        input_hidden_weights, hidden_output_weights = l.load_model("model.pkl")
+        input_hidden_weights, hidden_output_weights = l.load_model("lab_1/model.pkl")
         st.session_state.input_hidden_weights = input_hidden_weights
         st.session_state.hidden_output_weights = hidden_output_weights
     else:
