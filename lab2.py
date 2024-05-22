@@ -17,7 +17,6 @@ def train_network(X_train, X_test, y_train, y_test, network_type, layer_config):
         nn = MLPRegressor(hidden_layer_sizes=hidden_layer_sizes, activation='tanh', solver='adam', max_iter=1000)
 
     nn.fit(X_train, y_train)
-
     y_pred_train = nn.predict(X_train)
     y_pred_test = nn.predict(X_test)
 
