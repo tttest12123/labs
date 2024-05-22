@@ -31,7 +31,6 @@ def show():
         st.write(f"Input: [{input1}, {input2}]")
         st.write(f"Output: {prediction[0][0]:.0f}")
 
-    # Display the training code at the bottom
     st.write("## Training Code")
     code = """
 import numpy as np

@@ -29,6 +29,7 @@ def show():
     predictions = model.predict(X_test)
     predicted_classes = tf.argmax(predictions, axis=1).numpy()
 
+
     fig, axs = plt.subplots(3, 5, figsize=(15, 6))
     for i, ax in enumerate(axs.flat):
         ax.imshow(X_test[i].reshape(28, 28), cmap='gray')
@@ -37,9 +38,14 @@ def show():
 
     plt.tight_layout()
     st.pyplot(plt)
+    test_loss, test_acc = model.evaluate(X_test, y_test)
+    st.write(f"Test accuracy: {test_acc:.4f}")
 
     uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"])
     st.info('Choose an image, preferrably from mnist dataset', icon="ℹ️")
+    st.info('Image was not classified propery? oooops. \n Well, I used requiered feed-forward neural network here, however, CNNs are better for mnist.'
+            'You can also look at best MNIST benchmarks [here](https://paperswithcode.com/sota/image-classification-on-mnist?metric=Accuracy).', icon="🤓")
+
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
