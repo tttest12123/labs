@@ -21,8 +21,8 @@ def show():
 
     st.write("## Test the Trained Perceptron")
 
-    input1 = st.number_input("Input 1", min_value=0.0, max_value=1.0, step=1.0, value=0.0)
-    input2 = st.number_input("Input 2", min_value=0.0, max_value=1.0, step=1.0, value=0.0)
+    input1 = st.number_input("Input 1", min_value=0, max_value=1, step=1, value=0)
+    input2 = st.number_input("Input 2", min_value=0, max_value=1, step=1, value=0)
 
     if st.button("Test Perceptron"):
         user_input = np.array([[input1, input2]])
