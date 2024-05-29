@@ -8,6 +8,8 @@ import lab6
 import lab7
 import lab8
 import bonus
+from ai import generate_text_from_prompt
+
 pages = {
     "Lab 1": lab1.show,
     "Lab 2": lab2.show,
@@ -25,6 +27,14 @@ page = st.sidebar.radio("Go to", list(pages.keys()))
 
 pages[page]()
 st.markdown("---")
+st.info('Ask AI about this app!', icon='💻')
+my_prompt = "What do you think about the inclusion policies in Tech companies?"
+
+zephyr_model_response = generate_text_from_prompt(my_prompt)
+
+print(zephyr_model_response)
+st.markdown("---")
+
 
 col1, col2, col3 = st.columns(3)
 
