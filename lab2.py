@@ -4,14 +4,6 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
-import os
-
-def list_files(starting_directory):
-    for root, dirs, files in os.walk(starting_directory):
-        st.write(f"Directory: {root}")
-        for file in files:
-            st.write(f"  {file}")
-
 
 def train_network(X_train, X_test, y_train, y_test, network_type, layer_config):
     if network_type == 'feed_forward_backprop':
@@ -63,7 +55,6 @@ def show():
 
             X = np.random.uniform(-5, 5, (1000, 2))
             y = target_func(X[:, 0], X[:, 1])
-            list_files(os.getcwd())
 
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
             r2_train, r2_test, mse_train, mse_test, y_pred_test = train_network(X_train, X_test, y_train, y_test,
