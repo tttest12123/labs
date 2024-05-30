@@ -29,17 +29,13 @@ pages[page]()
 st.markdown("---")
 st.info('Ask AI about this app!', icon='💻')
 
-
 @st.cache_resource
 def load_model():
     tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small")
     model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-small")
     return tokenizer, model
 
-
 tokenizer, model = load_model()
-
-st.title("Flan-T5 Small Model")
 
 input_text = st.text_input("Enter your text:")
 
@@ -51,6 +47,10 @@ if st.button("Generate"):
         st.write(f"Output: {decoded_output}")
     else:
         st.write("Please enter some text to process.")
+
+st.warning("Yes, it's stupid. The Streamlit community gives 1 GB of space, and not a lot of models can fit in it. "
+           "It's better to use an API if you will be trying to recreate it yourself, but mind that "
+           "I have an evaluation in the second lab, so no secure tokens for you)")
 st.markdown("---")
 
 col1, col2, col3 = st.columns(3)
