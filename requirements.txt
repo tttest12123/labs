@@ -84,3 +84,5 @@ wrapt==1.16.0
 zipp==3.18.2
 diskcache==5.6.3
 llama-cpp-python==0.2.76
+transformers==4.26.1
+torch==1.13.1

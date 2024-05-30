@@ -8,7 +8,7 @@ import lab6
 import lab7
 import lab8
 import bonus
-from ai import generate_text_from_prompt
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 pages = {
     "Lab 1": lab1.show,
@@ -28,13 +28,30 @@ page = st.sidebar.radio("Go to", list(pages.keys()))
 pages[page]()
 st.markdown("---")
 st.info('Ask AI about this app!', icon='💻')
-my_prompt = "What do you think about the inclusion policies in Tech companies?"
 
-zephyr_model_response = generate_text_from_prompt(my_prompt)
 
-print(zephyr_model_response)
+@st.cache_resource
+def load_model():
+    tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small")
+    model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-small")
+    return tokenizer, model
+
+
+tokenizer, model = load_model()
+
+st.title("Flan-T5 Small Model")
+
+input_text = st.text_input("Enter your text:")
+
+if st.button("Generate"):
+    if input_text:
+        input_ids = tokenizer(input_text, return_tensors="pt").input_ids
+        outputs = model.generate(input_ids)
+        decoded_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        st.write(f"Output: {decoded_output}")
+    else:
+        st.write("Please enter some text to process.")
 st.markdown("---")
-
 
 col1, col2, col3 = st.columns(3)
 
