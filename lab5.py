@@ -45,7 +45,7 @@ def predict(model, img, class_names):
     return predicted_label
 
 def show():
-    model = load_model_from_hf('rriaa/lab_5_model/', 'stanford_dogs_inception_v3_model.h5')
+    model = load_model_from_hf('rriaa/lab_5_model', 'stanford_dogs_inception_v3_model.h5')
     st.title('Dog Breed Classifier')
 
     st.write('## Upload an Image for Prediction')
