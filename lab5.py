@@ -4,6 +4,8 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 from huggingface_hub import hf_hub_download
 
+from lab_5.show_code import CODE
+
 class_names = [
     "Chihuahua", "Japanese Spaniel", "Maltese Dog", "Pekinese", "Shih-Tzu", "Blenheim Spaniel",
     "Papillon", "Toy Terrier", "Rhodesian Ridgeback", "Afghan Hound", "Basset Hound", "Beagle",
@@ -59,4 +61,8 @@ def show():
         st.write("Classifying...")
         pred_label = predict(model, img_array, class_names)
         st.write(f'Predicted Label: {pred_label}')
+
+    st.write("## Training Code")
+    st.code(CODE, language='python')
+
 

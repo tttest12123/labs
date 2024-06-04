@@ -6,8 +6,8 @@ from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 
-train_dir = '/path/to/stanford_dogs/train'
-validation_dir = '/path/to/stanford_dogs/validation'
+train_dir = '/stanford_dogs/train'
+validation_dir = '/stanford_dogs/validation'
 
 train_datagen = ImageDataGenerator(
     rescale=1.0/255,
