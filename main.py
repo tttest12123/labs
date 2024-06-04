@@ -1,4 +1,6 @@
 import streamlit as st
+import openai
+from openai import OpenAI
 import lab1
 import lab2
 import lab3
@@ -8,7 +10,6 @@ import lab6
 import lab7
 import lab8
 import bonus
-from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 pages = {
     "Lab 1": lab1.show,
@@ -26,32 +27,41 @@ st.sidebar.title("Labs")
 page = st.sidebar.radio("Go to", list(pages.keys()))
 
 pages[page]()
+
+
+
 st.markdown("---")
-st.info('Ask AI about this app!', icon='💻')
+st.info('Ask AI your questions', icon='💻')
 
-@st.cache_resource
-def load_model():
-    tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-small")
-    model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-small")
-    return tokenizer, model
 
-tokenizer, model = load_model()
-
-input_text = st.text_input("Enter your text:")
+input_text = st.text_input("Enter your text (max 100 characters):", max_chars=100)
 
 if st.button("Generate"):
     if input_text:
-        input_ids = tokenizer(input_text, return_tensors="pt").input_ids
-        outputs = model.generate(input_ids)
-        decoded_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        st.write(f"Output: {decoded_output}")
+        try:
+            key = st.secrets['openai_api_key']
+
+            client = OpenAI(api_key=key)
+
+            stream = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": input_text}],
+                stream=True,
+            )
+            output_container = st.empty()
+            output = ""
+            for chunk in stream:
+                if chunk.choices[0].delta.content is not None:
+                    output += chunk.choices[0].delta.content
+                    output_container.write(output)
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
     else:
         st.write("Please enter some text to process.")
 
-st.warning("Yes, it's stupid. The Streamlit community gives 1 GB of space, and not a lot of models can fit in it. "
-           "It's better to use an API if you will be trying to recreate it yourself, but mind that "
-           "I have an evaluation in the second lab, so no secure tokens for you)")
 st.markdown("---")
+
+
 
 col1, col2, col3 = st.columns(3)
 

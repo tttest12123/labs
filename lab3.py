@@ -1,4 +1,3 @@
-import streamlit
 import streamlit as st
 import tensorflow as tf
 from keras.src.datasets import mnist
