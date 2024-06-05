@@ -16,7 +16,7 @@ def show():
     model_path = 'rriaa/lab_6'
     model_name = 'xception.h5'
     model = load_model_from_hf(model_path, model_name)
-    time = st.number_input("Input number of secods to process: ", 1, max_value=5)
+    time = st.number_input("Input number of secods to process: ", 1, max_value=3)
     st.title("Lab 6")
     uploaded_video = "vid.mp4"
 
