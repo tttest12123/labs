@@ -11,8 +11,6 @@ def show():
     st.header("XOR Perceptron Training Demo")
     st.write("Train a simple neural network to solve the XOR problem.")
 
-    epochs = 10000
-    learning_rate = 0.01
 
     if 'input_hidden_weights' not in st.session_state or 'hidden_output_weights' not in st.session_state:
         input_hidden_weights, hidden_output_weights = l.load_model("lab_1/model.pkl")
