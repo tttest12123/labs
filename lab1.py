@@ -1,7 +1,7 @@
 import streamlit as st
 import lab_1.lab_1_utils as l
 import numpy as np
-inport
+
 from lab_1.show_code import CODE
 
 
