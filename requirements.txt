@@ -90,3 +90,4 @@ sentencepiece
 librosa
 tensorflow-datasets
 openai
+opencv-python

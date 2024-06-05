@@ -23,9 +23,9 @@ def predict(model, img, class_names):
 def show():
     model = load_model()
     print(imagenette_classes)
-    st.title('Imagenette Classifier')
+    st.title('Lab 4')
 
-    st.write('## Upload an Image for Prediction')
+    st.write('## Upload an Image for Prediction (Imagenette)')
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
     if uploaded_file is not None:
