@@ -16,7 +16,7 @@ def show():
     model_path = 'rriaa/lab_6'
     model_name = 'xception.h5'
     model = load_model_from_hf(model_path, model_name)
-
+    time = st.number_input("input number of secods to process: ", 1)
     st.title("Lab 6")
     uploaded_video = "vid.mp4"
 
@@ -27,7 +27,7 @@ def show():
         video = cv2.VideoCapture(uploaded_video)
         stframe = st.empty()
         fps = video.get(cv2.CAP_PROP_FPS)
-        max_frames = int(1 * fps)  #5sec run
+        max_frames = int(time * fps)  #5sec run
 
         frame_count = 0
 
