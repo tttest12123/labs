@@ -9,6 +9,7 @@ import lab5
 import lab6
 import lab7
 import lab8
+import mkr
 import bonus
 
 pages = {
@@ -20,6 +21,7 @@ pages = {
     "Lab 6": lab6.show,
     "Lab 7": lab7.show,
     "Lab 8": lab8.show,
+    "Mkr": mkr.show,
     "Bonus": bonus.show,
 }
 
