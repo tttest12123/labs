@@ -90,4 +90,4 @@ sentencepiece
 librosa
 tensorflow-datasets
 openai
-opencv-python~=4.10.0.82
+opencv-python==4.5.5
