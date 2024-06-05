@@ -91,4 +91,3 @@ librosa
 tensorflow-datasets
 openai
 opencv-python~=4.10.0.82
-libgl1-mesa-glx
