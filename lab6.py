@@ -2,7 +2,6 @@ import tensorflow as tf
 import streamlit as st
 import cv2
 import numpy as np
-from keras.src.engine.input_layer import InputLayer
 
 from lab_6.show_code import CODE
 from huggingface_hub import hf_hub_download
