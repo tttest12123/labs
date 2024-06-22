@@ -24,7 +24,7 @@ def show():
     aud = 'lab_8/LJ001-001'
     st.write('Examples of audio processing')
     for i in range(1, 5):
-        st.audio(f'{aud}2.wav')
+        st.audio(f'{aud}{i}.wav')
         st.write(f"Expected: {arr[i-1]}")
         st.write(f"Got: {arr2[i-1]}")
 
